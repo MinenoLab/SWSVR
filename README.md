@@ -3,7 +3,7 @@ SW-SVR: Sliding Window-based Support Vector Regression
 Implementation of our paper, "Sliding window-based support vector regression for predicting micrometeorological data."
 http://www.sciencedirect.com/science/article/pii/S0957417416301786
 
-SW-SVR is a new methodology for predicting **micrometeorological data**, such as temperature and humidity.
+SW-SVR is a new methodology for predicting **micrometeorological data**, such as temperature and humidity.  
 This method involves a novel combination of SVR and ensemble learning.
 
 Usage:
@@ -38,7 +38,7 @@ By changing parameters in tutorial.py or constructor for SlidingWindowBasedSVR c
 
 +   `svr_cost`, `svr_epsilon`, `svr_intercept`, `svr_itr` :
     SW-SVR involves several Linear SVR, and these parameters are used in LinerSVR of scikit-learn.
-    http://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVR.html#sklearn.svm.LinearSVR
+    + Linear SVR: http://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVR.html#sklearn.svm.LinearSVR
 
 +   `kapp_gamma`, `kapp_num`, `pls_compnum` :
     SW-SVR uses kernel approximation and PLS regression for pre-processing, and these parameters are used in Kernel approximation/PLS regression of scikit-learn.
