@@ -31,6 +31,8 @@ We have already made training/testing data as pickel file in this tutorial.py as
 +   `Prediction horizon` :
     6 hours
 
+We prepared **tutorial.ipynb** and you can confirm the summary of the comperison in the paper.  
+Note: The parameters used in this tutorial are already tuned by grid-search.
 
 Description of parameters:
 ----------------

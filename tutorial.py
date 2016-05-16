@@ -72,10 +72,8 @@ if __name__ == '__main__':
         swsvr = ut.grid_tuning(swsvr_params, sdc_data, test_data)
     else:
         swsvr = SlidingWindowBasedSVR()
-    start = time.time()
     swsvr.train(sdc_data)
-    print "+ Each building time"
-    print "[SWSVR] built in %f sec" % (time.time()-start)
+    print "SWSVR: finish to build the model"
     simple_learners = ut.build_other_learners(sdc_data.pre_X, sdc_data.pre_y)
 
     # predict

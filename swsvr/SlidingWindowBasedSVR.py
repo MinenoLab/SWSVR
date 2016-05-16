@@ -29,13 +29,13 @@ class SlidingWindowBasedSVR:
     '''
 
     def __init__(self,
-                 svr_cost=1, svr_gamma=0.01, svr_epsilon=0.001, svr_intercept=2, svr_itr=100000, #SVR default
+                 svr_cost=32, svr_gamma=0.01, svr_epsilon=0.001, svr_intercept=2, svr_itr=100000, #SVR default
                  kapp_gamma=0.1, kapp_num=100, #KPCA
                  pls_compnum=50, #pls
                  sdc_weight=0.5, predict_weight=3, #IDW
                  lower_limit=10,
                  n_estimators=100,
-                 n_jobs=-1):
+                 n_jobs=1):
         '''yklearn constructor.
 
         Set some parameters and data for yklearn.
@@ -48,31 +48,6 @@ class SlidingWindowBasedSVR:
         self.converters = []
         self.trainer = Trainer.Trainer()
         self.converters.append(Converter.Converter()) #one converter
-        self.param_info = ParamInfo.ParamInfo(svr_cost, svr_gamma, svr_epsilon, svr_intercept, svr_itr,#SVR
-                                              kapp_gamma, kapp_num, #KPCA
-                                              pls_compnum, #pls
-                                              sdc_weight, predict_weight, #IDW
-                                              lower_limit,
-                                              n_estimators,
-                                              n_jobs)
-        self.extraction_rate = [] #to evaluate
-
-    def init(self,
-                 svr_cost=1, svr_gamma=0.01, svr_epsilon=0.1, svr_intercept=1, svr_itr=1000, #SVR default
-                 kapp_gamma=0.00001, kapp_num=100, #KPCA
-                 pls_compnum=50, #pls
-                 sdc_weight=0.5, predict_weight=3, #IDW
-                 lower_limit=10,
-                 n_estimators=10,
-                 n_jobs=0):
-        '''yklearn constructor.
-
-        Set some parameters and data for yklearn.
-        '''
-        self.weak_learners = []
-        self.converters = []
-        self.trainer = Trainer.Trainer()
-        self.converters.append(Converter.Converter())
         self.param_info = ParamInfo.ParamInfo(svr_cost, svr_gamma, svr_epsilon, svr_intercept, svr_itr,#SVR
                                               kapp_gamma, kapp_num, #KPCA
                                               pls_compnum, #pls

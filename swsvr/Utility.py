@@ -74,16 +74,15 @@ def build_other_learners(train_x, train_y):
     simple_learners.append(SimpleLearner("rf",RandomForestRegressor(n_jobs=-1, max_features=0.6, n_estimators=2, max_depth=8)))
     simple_learners.append(SimpleLearner("gb",GradientBoostingRegressor(n_estimators=10, loss='huber', learning_rate=0.5, max_depth=4)))
     simple_learners.append(SimpleLearner("linearSVR",LinearSVR(intercept_scaling=64, C=128, max_iter=1000, dual=False, loss='squared_epsilon_insensitive')))
-    #simple_learners.append(SimpleLearner("svr",SVR(C=100, epsilon=0.001, gamma=0.00001)))
+    simple_learners.append(SimpleLearner("svr",SVR(C=100, epsilon=0.001, gamma=0.00001)))
     for sl in simple_learners:
-        start = time.time()
         if sl.name == "linearSVR" or sl.name == "pa":
             sl.scaler.fit(train_x)
             s_train_x = sl.scaler.transform(train_x)
             sl.fit(s_train_x,train_y)
         else:
             sl.fit(train_x,train_y)
-        print "[%s] built in %f sec" % (sl.name,(time.time()-start))
+        print "%s: finish to build the model" % sl.name
     return simple_learners
 
 ##########################
@@ -96,7 +95,7 @@ def metrics(y_true, y_pred, is_print = False):
     tmp_mape = np.abs((y_true - y_pred) / y_true)
     mape = np.mean(tmp_mape) * 100
     if is_print:
-        print "MAPE:",mape
+        print mape
     return mape
 
 ##############################
